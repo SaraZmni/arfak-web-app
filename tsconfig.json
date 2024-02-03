@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "target": "es6",
         "allowUnreachableCode": false ,
         "exactOptionalPropertyTypes": true,
         "noFallthroughCasesInSwitch": true,
@@ -11,6 +12,7 @@
         "noImplicitReturns": true,
         "alwaysStrict": true,
         "strictBindCallApply": true,
+        "allowUmdGlobalAccess": true,
         "strictFunctionTypes": true,
         "strictNullChecks": true,
         "strictPropertyInitialization": true,
@@ -18,7 +20,18 @@
         "allowJs": true,
         "checkJs": true,
         "isolatedModules": true,
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "strict": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@components/*": ["components/*"],
+            "@routes/*": ["routes/*"],
+            "@helpers/*": ["helpers/*"],
+            "@configs/*": ["configs/*"],
+          }
     },
-    "include": ["src/**/**/*"],
-    "exclude": ["node_modules"]
+    "include": [
+        "src" // *** The files TypeScript should type check ***
+    ],
+    "exclude": ["node_modules", "build", "public"]
 }

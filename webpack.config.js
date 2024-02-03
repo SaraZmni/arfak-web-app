@@ -1,5 +1,10 @@
-const path = require("path")
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require("path");
+const webpack = require('webpack');
+
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const stylesHandler = 'style-loader';
 
@@ -12,13 +17,9 @@ module.exports = [
             path:path.resolve(__dirname,"dist"),
             filename:"bundle.js",
         },
-        plugins:[
-            new HtmlWebpackPlugin({
-                template:'./src/index.html',
-            })
-        ],
         resolve: {
             extensions:[".js",".ts",".tsx","jsx"],
+            plugins: [new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })],
         },
         module:{
             rules:[
@@ -33,7 +34,10 @@ module.exports = [
                     use: {
                         loader: 'babel-loader',
                         options:{
-                            presets:['@babel/preset-env','@babel/preset-react','@babel/preset-typescript']
+                            presets:['@babel/preset-env','@babel/preset-react','@babel/preset-typescript'],
+                            plugins: [
+                               require('react-refresh/babel'),
+                              ].filter(Boolean),
                         }
                     }
                 },
@@ -44,7 +48,18 @@ module.exports = [
                 },
               
             ]
-        }
+        },
+        plugins:[
+            new HtmlWebpackPlugin({
+                template:'./src/index.html',
+            }),
+            new ReactRefreshWebpackPlugin({
+                overlay: false,
+              }),
+            new webpack.ProvidePlugin({
+                React: 'react',
+            }),
+        ],
 
     }
 ]

@@ -7,6 +7,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const stylesHandler = 'style-loader';
+const wsServerAddress = 'ws://localhost:' + process.env.DEV_SERVER_PORT + process.env.BASE_URL;
 
 module.exports = [
     {
@@ -49,6 +50,9 @@ module.exports = [
               
             ]
         },
+        devServer: {
+            historyApiFallback: true,
+          },
         plugins:[
             new HtmlWebpackPlugin({
                 template:'./src/index.html',

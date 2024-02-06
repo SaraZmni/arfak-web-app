@@ -3,7 +3,7 @@ import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./home";
 import { About } from "./about";
-import { Blog } from "./blog";
+import { Blogs } from "./blogs";
 import { Contact } from "./contact";
 
 const AppRouter: FC = () => {
@@ -21,8 +21,8 @@ const AppRouter: FC = () => {
           element: <About />,
         },
         {
-          path: "/blog",
-          element: <Blog />,
+          path: "/blogs",
+          element: <Blogs />,
         },
         {
           path: "/contact",

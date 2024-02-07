@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "module": "esnext",
+        "target": "esnext",
         "allowUnreachableCode": false ,
         "exactOptionalPropertyTypes": true,
         "noFallthroughCasesInSwitch": true,

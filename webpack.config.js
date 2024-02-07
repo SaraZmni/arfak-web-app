@@ -45,7 +45,7 @@ module.exports = [
                 {
                     test:/\.css$/,
                     exclude:/node_modules/,
-                    use: [stylesHandler, 'css-loader', 'postcss-loader'],
+                    use: ['css-loader','postcss-loader',stylesHandler],
                 },
               
             ]
